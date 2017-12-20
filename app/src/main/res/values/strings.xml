@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Pixabay API For Android</string>
+    <string name="error">Oops! Something went wrong!</string>
+    <string name="search_on_pixabay">Search on pixabay.com</string>
+    <string name="search_hint">Search images, vectors and videos</string>
+</resources>
