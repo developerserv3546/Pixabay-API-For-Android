@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 import com.developer35.serega.pixabayapiforandroid.R;
+import com.developer35.serega.pixabayapiforandroid.SearchApi;
+import com.developer35.serega.pixabayapiforandroid.SearchService;
 import com.developer35.serega.pixabayapiforandroid.StringConverter;
 import com.developer35.serega.pixabayapiforandroid.entities.ItemEntity;
 import com.developer35.serega.pixabayapiforandroid.entities.SearchEntity;
@@ -17,6 +19,7 @@ import retrofit2.Response;
 
 public class SearchResultActivity extends Activity {
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,9 +28,9 @@ public class SearchResultActivity extends Activity {
         String input = getIntent().getStringExtra(SearchInputActivity.TAG_INPUT);
         String query = StringConverter.getQueryString(input);
 
-//        SearchApi searchApi = SearchService.getSearchApi();
-//        Call<SearchEntity> searchEntities = searchApi.getSearchResult();
-//        searchEntities.enqueue(callback);
+        SearchApi searchApi = SearchService.getSearchApi();
+        Call<SearchEntity> searchEntities = searchApi.getSearchResult(query);
+        searchEntities.enqueue(callback);
     }
 
     private final Callback<SearchEntity> callback = new Callback<SearchEntity>() {
