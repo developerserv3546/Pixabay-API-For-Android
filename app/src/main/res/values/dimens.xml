@@ -3,4 +3,13 @@
     <dimen name="margin_top_search_view">20dp</dimen>
     <dimen name="margin_top_search_title">20dp</dimen>
     <dimen name="text_size_search_title">18sp</dimen>
+
+    <!--recycle view item-->
+    <dimen name="card_view_margin">10dp</dimen>
+    <dimen name="item_layout_margin">10dp</dimen>
+    <dimen name="item_image_view_height">300dp</dimen>
+    <dimen name="item_author_layout_margin_top">10dp</dimen>
+    <dimen name="item_author_image_size">32dp</dimen>
+    <dimen name="item_author_text_margin_start">10dp</dimen>
+    <dimen name="item_text_like_margin_end">10dp</dimen>
 </resources>

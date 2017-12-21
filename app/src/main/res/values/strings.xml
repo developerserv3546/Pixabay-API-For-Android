@@ -3,4 +3,6 @@
     <string name="error">Oops! Something went wrong!</string>
     <string name="search_on_pixabay">Search on pixabay.com</string>
     <string name="search_hint">Search images, vectors and videos</string>
+    <string name="author">Author: %1$s</string>
+    <string name="download">Download</string>
 </resources>

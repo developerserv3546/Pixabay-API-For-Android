@@ -1,4 +1,4 @@
-package com.developer35.serega.pixabayapiforandroid;
+package com.developer35.serega.pixabayapiforandroid.utils;
 
 
 public class StringConverter {

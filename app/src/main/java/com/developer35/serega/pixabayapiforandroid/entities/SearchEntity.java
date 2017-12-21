@@ -5,7 +5,6 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class SearchEntity {
 
@@ -19,7 +18,7 @@ public class SearchEntity {
 
     @SerializedName("hits")
     @Expose
-    private List<ItemEntity> imageEntities = new ArrayList<>();
+    private ArrayList<ItemEntity> items = new ArrayList<>();
 
     public Long getTotal() {
         return total;
@@ -29,8 +28,8 @@ public class SearchEntity {
         return totalHits;
     }
 
-    public List<ItemEntity> getImageEntities() {
-        return imageEntities;
+    public ArrayList<ItemEntity> getItems() {
+        return items;
     }
 
     @Override
@@ -38,7 +37,7 @@ public class SearchEntity {
         return "SearchEntity{" +
                 "total=" + total +
                 ", totalHits=" + totalHits +
-                ", imageEntities=" + imageEntities +
+                ", items=" + items +
                 '}';
     }
 }

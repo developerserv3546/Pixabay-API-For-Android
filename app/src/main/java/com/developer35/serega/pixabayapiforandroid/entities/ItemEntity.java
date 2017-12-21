@@ -68,11 +68,11 @@ public class ItemEntity {
 
     @SerializedName("favorites")
     @Expose
-    private Long favorites;
+    private String favorites;
 
     @SerializedName("likes")
     @Expose
-    private Long likes;
+    private String likes;
 
     @SerializedName("comments")
     @Expose
@@ -150,11 +150,11 @@ public class ItemEntity {
         return downloads;
     }
 
-    public Long getFavorites() {
+    public String getFavorites() {
         return favorites;
     }
 
-    public Long getLikes() {
+    public String getLikes() {
         return likes;
     }
 
