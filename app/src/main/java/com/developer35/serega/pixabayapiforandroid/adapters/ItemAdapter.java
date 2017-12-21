@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -81,6 +82,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
         private final TextView authorName;
         private final TextView likeView;
         private final TextView favoriteView;
+        private final Button btnDownload;
 
         ViewHolder(View itemView, AdapterClickListener clickListener) {
             super(itemView);
@@ -90,11 +92,14 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
             authorName = itemView.findViewById(R.id.txt_view_author);
             likeView = itemView.findViewById(R.id.txt_view_like);
             favoriteView = itemView.findViewById(R.id.txt_view_favorite);
+            btnDownload = itemView.findViewById(R.id.action_download);
+            thumbnailView.setOnClickListener(this);
+            btnDownload.setOnClickListener(this);
         }
 
         @Override
         public void onClick(View view) {
-            clickListener.onClick(getAdapterPosition());
+            clickListener.onClick(getAdapterPosition(), view);
         }
 
         private void cancelPicassoRequest() {
