@@ -104,17 +104,22 @@ public class SearchResultActivity extends Activity {
 
     private void downloadImage(int position) {
         String url = items.get(position).getWebformatURL();
+        String name = StringConverter.getImageNameFromUrl(url);
+
         DownloadManager downloadManager = (DownloadManager) getSystemService(DOWNLOAD_SERVICE);
         DownloadManager.Request request = new DownloadManager.Request(Uri.parse(url));
 
         request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_WIFI
                 | DownloadManager.Request.NETWORK_MOBILE)
                 .setAllowedOverRoaming(false)
-                .setTitle(getString(R.string.downloading))
-                .setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS,
-                        "test.png");
+                .setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
+                .setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, name);
 
-        downloadManager.enqueue(request);
+        if (downloadManager != null) {
+            downloadManager.enqueue(request);
+        } else {
+            showErrorToast();
+        }
     }
 
     private void showErrorToast() {

@@ -7,6 +7,7 @@ public class StringConverter {
     private static final String REPLACEMENT = "";
     private static final String SPLIT_CHAR = "\\s";
     private static final String PLUS_CHAR = "+";
+    private static final String URL_SEPARATOR = "/";
     private static final int MAX_LENGTH = 100;
 
     public static String getQueryString(String input) {
@@ -34,5 +35,10 @@ public class StringConverter {
         }
 
         return query;
+    }
+
+    public static String getImageNameFromUrl(String url) {
+        int index = url.lastIndexOf(URL_SEPARATOR);
+        return url.substring(index);
     }
 }
