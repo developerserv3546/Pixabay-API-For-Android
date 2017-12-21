@@ -35,32 +35,40 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(ItemAdapter.ViewHolder holder, int position) {
-
         ItemEntity entity = items.get(position);
 
-        String url = entity.getWebformatURL();
+        setThumbnailImage(entity.getWebformatURL(), holder.thumbnailView);
+        setAuthorImage(entity.getUserImageURL(), holder.authorImage);
 
-        Picasso.with(holder.thumbnailView.getContext())
-                .load(url)
-                .into(holder.thumbnailView);
+        String author = holder.authorName.getContext()
+                .getString(R.string.author, items.get(position).getUserName());
+        String downloads = holder.downloadsView.getContext()
+                .getString(R.string.total_downloads, entity.getDownloads());
+        String size = holder.sizeView.getContext()
+                .getString(R.string.size, entity.getWebformatWidth(), entity.getWebformatHeight());
 
-        String authorImageUrl = entity.getUserImageURL();
-
-        if (authorImageUrl != null && !authorImageUrl.isEmpty()) {
-            Picasso.with(holder.authorImage.getContext())
-                    .load(authorImageUrl)
-                    .error(R.drawable.ic_person_32dp)
-                    .into(holder.authorImage);
-        } else {
-            holder.authorImage.setImageResource(R.drawable.ic_person_32dp);
-        }
-
-
-        String author = holder.authorName.getContext().getString(R.string.author, items.get(position).getUserName());
         holder.authorName.setText(author);
-
         holder.likeView.setText(entity.getLikes());
         holder.favoriteView.setText(entity.getFavorites());
+        holder.downloadsView.setText(downloads);
+        holder.sizeView.setText(size);
+    }
+
+    private void setThumbnailImage(String url, ImageView thumbnailView) {
+        Picasso.with(thumbnailView.getContext())
+                .load(url)
+                .into(thumbnailView);
+    }
+
+    private void setAuthorImage(String authorImageUrl, ImageView authorImage) {
+        if (authorImageUrl != null && !authorImageUrl.isEmpty()) {
+            Picasso.with(authorImage.getContext())
+                    .load(authorImageUrl)
+                    .error(R.drawable.ic_person_32dp)
+                    .into(authorImage);
+        } else {
+            authorImage.setImageResource(R.drawable.ic_person_32dp);
+        }
     }
 
     @Override
@@ -82,6 +90,8 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
         private final TextView authorName;
         private final TextView likeView;
         private final TextView favoriteView;
+        private final TextView downloadsView;
+        private final TextView sizeView;
         private final Button btnDownload;
 
         ViewHolder(View itemView, AdapterClickListener clickListener) {
@@ -92,6 +102,8 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
             authorName = itemView.findViewById(R.id.txt_view_author);
             likeView = itemView.findViewById(R.id.txt_view_like);
             favoriteView = itemView.findViewById(R.id.txt_view_favorite);
+            downloadsView = itemView.findViewById(R.id.txt_view_downloads);
+            sizeView = itemView.findViewById(R.id.txt_view_size);
             btnDownload = itemView.findViewById(R.id.action_download);
             thumbnailView.setOnClickListener(this);
             btnDownload.setOnClickListener(this);
