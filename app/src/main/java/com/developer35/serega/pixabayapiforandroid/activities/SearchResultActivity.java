@@ -53,10 +53,13 @@ public class SearchResultActivity extends Activity {
         public void onResponse(Call<SearchEntity> call, Response<SearchEntity> response) {
             if (response.isSuccessful()) {
                 SearchEntity result = response.body();
-                items = result.getItems();
-
-                ItemAdapter adapter = new ItemAdapter(items, adapterClickListener);
-                recyclerView.setAdapter(adapter);
+                if (result != null) {
+                    items = result.getItems();
+                    ItemAdapter adapter = new ItemAdapter(items, adapterClickListener);
+                    recyclerView.setAdapter(adapter);
+                } else {
+                    showErrorToast();
+                }
             } else {
                 showErrorToast();
             }
