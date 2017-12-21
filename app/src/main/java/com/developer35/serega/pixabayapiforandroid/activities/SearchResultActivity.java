@@ -1,11 +1,13 @@
 package com.developer35.serega.pixabayapiforandroid.activities;
 
 import android.app.Activity;
+import android.app.DownloadManager;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -80,6 +82,7 @@ public class SearchResultActivity extends Activity {
                     openPageInBrowser(position);
                     break;
                 case R.id.action_download:
+                    downloadImage(position);
                     break;
             }
         }
@@ -97,7 +100,21 @@ public class SearchResultActivity extends Activity {
         } else {
             Toast.makeText(this, getString(R.string.no_applications), Toast.LENGTH_SHORT).show();
         }
+    }
 
+    private void downloadImage(int position) {
+        String url = items.get(position).getWebformatURL();
+        DownloadManager downloadManager = (DownloadManager) getSystemService(DOWNLOAD_SERVICE);
+        DownloadManager.Request request = new DownloadManager.Request(Uri.parse(url));
+
+        request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_WIFI
+                | DownloadManager.Request.NETWORK_MOBILE)
+                .setAllowedOverRoaming(false)
+                .setTitle(getString(R.string.downloading))
+                .setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS,
+                        "test.png");
+
+        downloadManager.enqueue(request);
     }
 
     private void showErrorToast() {

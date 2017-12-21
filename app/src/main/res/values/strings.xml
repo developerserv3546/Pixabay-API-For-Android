@@ -6,4 +6,5 @@
     <string name="search_hint">Search images, vectors and videos</string>
     <string name="author">Author: %1$s</string>
     <string name="download">Download</string>
+    <string name="downloading">Downloading..</string>
 </resources>
