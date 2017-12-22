@@ -42,11 +42,14 @@ public class SearchResultActivity extends Activity {
         recyclerView = findViewById(R.id.recycle_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        String input = getIntent().getStringExtra(SearchInputActivity.TAG_INPUT);
-        String query = StringConverter.getQueryString(input);
+        String query = getIntent().getStringExtra(SearchInputActivity.TAG_INPUT);
+        query = StringConverter.getQueryString(query);
+
+        String type = getIntent().getStringExtra(SearchInputActivity.TAG_TYPE);
+        type = StringConverter.getImageTypeQuery(type);
 
         SearchApi searchApi = SearchService.getSearchApi();
-        Call<SearchEntity> searchEntities = searchApi.getSearchResult(query);
+        Call<SearchEntity> searchEntities = searchApi.getSearchResult(query, type);
         searchEntities.enqueue(callback);
     }
 

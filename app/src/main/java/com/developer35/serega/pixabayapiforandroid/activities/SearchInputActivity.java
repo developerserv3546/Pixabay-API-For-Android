@@ -12,6 +12,7 @@ import android.support.v4.content.ContextCompat;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.SearchView;
+import android.widget.Spinner;
 
 import com.developer35.serega.pixabayapiforandroid.R;
 
@@ -19,6 +20,8 @@ public class SearchInputActivity extends Activity {
 
     private static final int REQUEST_CODE_STORAGE_PERMISSION = 1;
     public static final String TAG_INPUT = "input";
+    public static final String TAG_TYPE = "type";
+    private Spinner spinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +30,7 @@ public class SearchInputActivity extends Activity {
         setContentView(R.layout.activity_search_input);
         checkForPermissions();
 
+        spinner = findViewById(R.id.spinner);
         SearchView searchView = findViewById(R.id.search_view);
         searchView.setActivated(true);
         searchView.setOnQueryTextListener(queryTextListener);
@@ -82,6 +86,7 @@ public class SearchInputActivity extends Activity {
     private void startSearchResultActivity(String input) {
         Intent intent = new Intent(SearchInputActivity.this, SearchResultActivity.class);
         intent.putExtra(TAG_INPUT, input);
+        intent.putExtra(TAG_TYPE, spinner.getSelectedItem().toString());
         startActivity(intent);
     }
 

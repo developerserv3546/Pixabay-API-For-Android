@@ -1,14 +1,25 @@
 package com.developer35.serega.pixabayapiforandroid.utils;
 
 
+import java.util.HashMap;
+
 public class StringConverter {
 
+    private static final HashMap<String, String> IMAGE_TYPES;
     private static final String REGEX = "[^a-zA-Z0-9\\s]";
     private static final String REPLACEMENT = "";
     private static final String SPLIT_CHAR = "\\s";
     private static final String PLUS_CHAR = "+";
     private static final String URL_SEPARATOR = "/";
     private static final int MAX_LENGTH = 100;
+
+    static {
+        IMAGE_TYPES = new HashMap<>();
+        IMAGE_TYPES.put("All images", "all");
+        IMAGE_TYPES.put("Photos", "photo");
+        IMAGE_TYPES.put("Vector graphics", "vector");
+        IMAGE_TYPES.put("Illustrations", "illustration");
+    }
 
     public static String getQueryString(String input) {
 
@@ -40,5 +51,9 @@ public class StringConverter {
     public static String getImageNameFromUrl(String url) {
         int index = url.lastIndexOf(URL_SEPARATOR);
         return url.substring(index);
+    }
+
+    public static String getImageTypeQuery(String key){
+        return IMAGE_TYPES.get(key);
     }
 }

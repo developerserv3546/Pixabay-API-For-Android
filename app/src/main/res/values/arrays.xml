@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="types">
+        <item>All images</item>
+        <item>Photos</item>
+        <item>Vector graphics</item>
+        <item>Illustrations</item>
+    </string-array>
+</resources>

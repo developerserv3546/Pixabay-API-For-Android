@@ -20,7 +20,13 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="@dimen/margin_top_search_view"
+            android:fontFamily="sans-serif-condensed"
+            android:shadowColor="@color/colorTextTitleShadow"
+            android:shadowDx="3"
+            android:shadowDy="3"
+            android:shadowRadius="5"
             android:text="@string/search_on_pixabay"
+            android:textColor="@color/colorTextTitle"
             android:textSize="@dimen/text_size_search_title"
             android:textStyle="bold" />
 
@@ -33,6 +39,15 @@
             android:layout_marginTop="@dimen/margin_top_search_view"
             android:iconifiedByDefault="false"
             android:queryHint="@string/search_hint" />
+
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/search_view"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/margin_top_spinner"
+            android:entries="@array/types" />
 
     </RelativeLayout>
 </FrameLayout>
