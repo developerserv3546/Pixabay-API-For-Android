@@ -9,6 +9,8 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.SearchView;
 
 import com.developer35.serega.pixabayapiforandroid.R;
@@ -21,12 +23,19 @@ public class SearchInputActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        hideActionBar();
         setContentView(R.layout.activity_search_input);
         checkForPermissions();
 
         SearchView searchView = findViewById(R.id.search_view);
         searchView.setActivated(true);
         searchView.setOnQueryTextListener(queryTextListener);
+    }
+
+    private void hideActionBar() {
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
     }
 
     private void checkForPermissions() {
