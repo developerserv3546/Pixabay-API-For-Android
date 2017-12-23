@@ -12,6 +12,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.developer35.serega.pixabayapiforandroid.Fabric;
@@ -32,6 +33,7 @@ import retrofit2.Response;
 
 public class SearchResultActivity extends AppCompatActivity {
 
+    private TextView nothingFoundView;
     private RecyclerView recyclerView;
     private ArrayList<ItemEntity> items;
 
@@ -49,6 +51,7 @@ public class SearchResultActivity extends AppCompatActivity {
             }
         });
 
+        nothingFoundView = findViewById(R.id.txt_view_nothing_found);
         recyclerView = findViewById(R.id.recycle_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
@@ -77,8 +80,13 @@ public class SearchResultActivity extends AppCompatActivity {
                 SearchEntity result = response.body();
                 if (result != null) {
                     items = result.getItems();
-                    ItemAdapter adapter = new ItemAdapter(items, adapterClickListener);
-                    recyclerView.setAdapter(adapter);
+                    if (items != null && items.size() > 0) {
+                        ItemAdapter adapter = new ItemAdapter(items, adapterClickListener);
+                        recyclerView.setAdapter(adapter);
+                    } else {
+                        recyclerView.setVisibility(View.GONE);
+                        nothingFoundView.setVisibility(View.VISIBLE);
+                    }
                 } else {
                     showErrorToast();
                 }
