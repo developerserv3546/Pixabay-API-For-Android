@@ -10,7 +10,6 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.view.Window;
-import android.view.WindowManager;
 import android.widget.SearchView;
 import android.widget.Spinner;
 
@@ -30,7 +29,8 @@ public class SearchInputActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        hideActionBar();
+
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_search_input);
         checkForPermissions();
 
@@ -41,12 +41,6 @@ public class SearchInputActivity extends Activity {
         SearchView searchView = findViewById(R.id.search_view);
         searchView.setActivated(true);
         searchView.setOnQueryTextListener(queryTextListener);
-    }
-
-    private void hideActionBar() {
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);
     }
 
     private void checkForPermissions() {

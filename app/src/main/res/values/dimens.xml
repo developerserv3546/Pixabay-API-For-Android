@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <!--TollBar-->
+    <dimen name="tool_bar_elevation">4dp</dimen>
+
+    <!--SearchInputActivity-->
     <dimen name="margin_top_search_view">20dp</dimen>
     <dimen name="margin_top_search_title">20dp</dimen>
     <dimen name="text_size_search_title">24sp</dimen>
