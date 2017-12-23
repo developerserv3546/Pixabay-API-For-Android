@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.view.View;
 import android.view.Window;
 import android.widget.SearchView;
 import android.widget.Spinner;
@@ -37,6 +38,10 @@ public class SearchInputActivity extends Activity {
         spinnerType = findViewById(R.id.spinner_type);
         spinnerCategory = findViewById(R.id.spinner_category);
         spinnerOrientation = findViewById(R.id.spinner_orientation);
+
+        findViewById(R.id.layout_spinner_type).setOnClickListener(listener);
+        findViewById(R.id.layout_spinner_category).setOnClickListener(listener);
+        findViewById(R.id.layout_spinner_orientation).setOnClickListener(listener);
 
         SearchView searchView = findViewById(R.id.search_view);
         searchView.setActivated(true);
@@ -70,6 +75,23 @@ public class SearchInputActivity extends Activity {
             }
         }
     }
+
+    private final View.OnClickListener listener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            switch (view.getId()) {
+                case R.id.layout_spinner_type:
+                    spinnerType.performClick();
+                    break;
+                case R.id.layout_spinner_category:
+                    spinnerCategory.performClick();
+                    break;
+                case R.id.layout_spinner_orientation:
+                    spinnerOrientation.performClick();
+                    break;
+            }
+        }
+    };
 
     private final SearchView.OnQueryTextListener queryTextListener = new SearchView.OnQueryTextListener() {
         @Override
