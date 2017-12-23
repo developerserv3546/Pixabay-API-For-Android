@@ -21,7 +21,11 @@ public class SearchInputActivity extends Activity {
     private static final int REQUEST_CODE_STORAGE_PERMISSION = 1;
     public static final String TAG_INPUT = "input";
     public static final String TAG_TYPE = "type";
-    private Spinner spinner;
+    public static final String TAG_CATEGORY = "category";
+    public static final String TAG_ORIENTATION = "orientation";
+    private Spinner spinnerType;
+    private Spinner spinnerCategory;
+    private Spinner spinnerOrientation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +34,10 @@ public class SearchInputActivity extends Activity {
         setContentView(R.layout.activity_search_input);
         checkForPermissions();
 
-        spinner = findViewById(R.id.spinner);
+        spinnerType = findViewById(R.id.spinner_type);
+        spinnerCategory = findViewById(R.id.spinner_category);
+        spinnerOrientation = findViewById(R.id.spinner_orientation);
+
         SearchView searchView = findViewById(R.id.search_view);
         searchView.setActivated(true);
         searchView.setOnQueryTextListener(queryTextListener);
@@ -86,7 +93,9 @@ public class SearchInputActivity extends Activity {
     private void startSearchResultActivity(String input) {
         Intent intent = new Intent(SearchInputActivity.this, SearchResultActivity.class);
         intent.putExtra(TAG_INPUT, input);
-        intent.putExtra(TAG_TYPE, spinner.getSelectedItem().toString());
+        intent.putExtra(TAG_TYPE, spinnerType.getSelectedItem().toString());
+        intent.putExtra(TAG_CATEGORY, spinnerCategory.getSelectedItem().toString());
+        intent.putExtra(TAG_ORIENTATION, spinnerOrientation.getSelectedItem().toString());
         startActivity(intent);
     }
 

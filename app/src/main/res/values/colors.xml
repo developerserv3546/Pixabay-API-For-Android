@@ -6,4 +6,5 @@
     <color name="colorButtonText">#2d6829</color>
     <color name="colorTextTitleShadow">#f8fcff</color>
     <color name="colorTextTitle">#111c25</color>
+    <color name="colorSpinnerLayout">#b4ffffff</color>
 </resources>

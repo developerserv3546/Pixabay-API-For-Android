@@ -3,9 +3,12 @@
     <string name="error">Oops! Something went wrong!</string>
     <string name="no_applications">No applications to handle your request!</string>
     <string name="search_on_pixabay">Search on pixabay.com</string>
-    <string name="search_hint">Search images, vectors and videos</string>
+    <string name="search_hint">Search photos, vectors and illustrations</string>
     <string name="author">Author: %1$s</string>
     <string name="total_downloads">Downloads %1$d</string>
     <string name="size">Size %1$dx%2$d</string>
     <string name="download">Download</string>
+    <string name="title_image_type">Image type</string>
+    <string name="orientation">Orientation</string>
+    <string name="category">Category</string>
 </resources>

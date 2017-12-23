@@ -6,7 +6,7 @@ import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class SearchService {
+public class Fabric {
 
     private static final String BASE_URL = "http://pixabay.com/api/";
 

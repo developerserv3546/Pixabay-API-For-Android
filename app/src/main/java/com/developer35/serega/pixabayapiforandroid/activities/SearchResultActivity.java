@@ -13,9 +13,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Toast;
 
+import com.developer35.serega.pixabayapiforandroid.Fabric;
 import com.developer35.serega.pixabayapiforandroid.R;
 import com.developer35.serega.pixabayapiforandroid.SearchApi;
-import com.developer35.serega.pixabayapiforandroid.SearchService;
 import com.developer35.serega.pixabayapiforandroid.adapters.ItemAdapter;
 import com.developer35.serega.pixabayapiforandroid.entities.ItemEntity;
 import com.developer35.serega.pixabayapiforandroid.entities.SearchEntity;
@@ -48,8 +48,15 @@ public class SearchResultActivity extends Activity {
         String type = getIntent().getStringExtra(SearchInputActivity.TAG_TYPE);
         type = StringConverter.getImageTypeQuery(type);
 
-        SearchApi searchApi = SearchService.getSearchApi();
-        Call<SearchEntity> searchEntities = searchApi.getSearchResult(query, type);
+        String category = getIntent().getStringExtra(SearchInputActivity.TAG_CATEGORY);
+        category = StringConverter.getImageCategoryQuery(category);
+
+        String orientation = getIntent().getStringExtra(SearchInputActivity.TAG_ORIENTATION);
+        orientation = StringConverter.getImageOrientationQuery(orientation);
+
+        SearchApi searchApi = Fabric.getSearchApi();
+        Call<SearchEntity> searchEntities = searchApi
+                .getSearchResult(query, type, category, orientation);
         searchEntities.enqueue(callback);
     }
 

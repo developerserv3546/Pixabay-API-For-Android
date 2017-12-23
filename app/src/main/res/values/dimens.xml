@@ -2,8 +2,14 @@
 <resources>
     <dimen name="margin_top_search_view">20dp</dimen>
     <dimen name="margin_top_search_title">20dp</dimen>
-    <dimen name="margin_top_spinner">28dp</dimen>
     <dimen name="text_size_search_title">24sp</dimen>
+    <dimen name="margin_top_layout_spinner">28dp</dimen>
+    <dimen name="margin_start_layout_spinner">10dp</dimen>
+    <dimen name="margin_end_layout_spinner">10dp</dimen>
+    <dimen name="margin_start_title_spinner">8dp</dimen>
+    <dimen name="padding_top_layout_spinner">8dp</dimen>
+    <dimen name="padding_bottom_layout_spinner">8dp</dimen>
+
 
     <!--recycle view item-->
     <dimen name="card_view_margin">10dp</dimen>

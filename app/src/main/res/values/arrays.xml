@@ -6,4 +6,33 @@
         <item>Vector graphics</item>
         <item>Illustrations</item>
     </string-array>
+
+    <string-array name="categories">
+        <item>Any category</item>
+        <item>Fashion</item>
+        <item>Nature</item>
+        <item>Backgrounds</item>
+        <item>Education</item>
+        <item>People</item>
+        <item>Feelings</item>
+        <item>Religion</item>
+        <item>Health</item>
+        <item>Places</item>
+        <item>Animals</item>
+        <item>Industry</item>
+        <item>Food</item>
+        <item>Computer</item>
+        <item>Sports</item>
+        <item>Transportation</item>
+        <item>Travel</item>
+        <item>Buildings</item>
+        <item>Business</item>
+        <item>Music</item>
+    </string-array>
+
+    <string-array name="orientations">
+        <item>Any orientation</item>
+        <item>Horizontal</item>
+        <item>Vertical</item>
+    </string-array>
 </resources>

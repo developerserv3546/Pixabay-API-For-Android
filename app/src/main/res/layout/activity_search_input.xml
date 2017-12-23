@@ -40,14 +40,59 @@
             android:iconifiedByDefault="false"
             android:queryHint="@string/search_hint" />
 
-        <Spinner
-            android:id="@+id/spinner"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/search_view"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="@dimen/margin_top_spinner"
-            android:entries="@array/types" />
+        <LinearLayout
+            android:id="@+id/layout_spinner_type"
+            style="@style/SpinnerLayout"
+            android:layout_below="@+id/search_view">
+
+            <TextView
+                android:id="@+id/spinner_type_title"
+                style="@style/SpinnerTitle"
+                android:text="@string/title_image_type" />
+
+            <Spinner
+                android:id="@+id/spinner_type"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:entries="@array/types" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_spinner_category"
+            style="@style/SpinnerLayout"
+            android:layout_below="@+id/layout_spinner_type">
+
+            <TextView
+                android:id="@+id/spinner_category_title"
+                style="@style/SpinnerTitle"
+                android:text="@string/category" />
+
+            <Spinner
+                android:id="@+id/spinner_category"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:entries="@array/categories" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_spinner_orientation"
+            style="@style/SpinnerLayout"
+            android:layout_below="@+id/layout_spinner_category">
+
+            <TextView
+                android:id="@+id/spinner_orientation_title"
+                style="@style/SpinnerTitle"
+                android:text="@string/orientation" />
+
+            <Spinner
+                android:id="@+id/spinner_orientation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:entries="@array/orientations" />
+
+        </LinearLayout>
 
     </RelativeLayout>
 </FrameLayout>

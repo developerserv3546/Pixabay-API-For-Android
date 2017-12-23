@@ -9,7 +9,9 @@ import retrofit2.http.Query;
 
 public interface SearchApi {
 
-    @GET("?key=7446566-3a89da866024fd9f5d4ae9572")
+    @GET("?key=7446566-3a89da866024fd9f5d4ae9572&per_page=200")
     Call<SearchEntity> getSearchResult(@Query("q") String query,
-                                       @Query("image_type") String type);
+                                       @Query("image_type") String type,
+                                       @Query("category") String category,
+                                       @Query("orientation") String orientation);
 }
