@@ -12,6 +12,7 @@
         android:layout_height="?attr/actionBarSize"
         android:background="?attr/colorPrimary"
         android:elevation="@dimen/tool_bar_elevation"
+        app:navigationIcon="@drawable/ic_arrow_back_24dp"
         app:titleTextColor="@color/colorTextToolBar" />
 
     <android.support.v7.widget.RecyclerView
